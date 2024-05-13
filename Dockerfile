@@ -1,7 +1,7 @@
 FROM ubuntu:22.04
 
 RUN apt-get update \
-    && apt-get install --no-install-recommends -yq python3.11 python3-pip
+    && apt-get install --no-install-recommends -yq python3.10 python3-pip
 
 RUN useradd -ms /bin/bash -u 1000 test
 USER test
@@ -10,6 +10,6 @@ USER test
 # This means the test user doesn't have access to the installed library (see run.sh)
 RUN whoami \
     && echo $HOME \
-    && python3.11 -m pip install --user httpx[cli] \
+    && python3.10 -m pip install --user httpx[cli] \
     && ls -la /home/test/.local/lib \
     && ls -la /home/test/.local/bin
